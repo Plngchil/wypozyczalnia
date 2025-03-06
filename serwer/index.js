@@ -37,6 +37,16 @@ app.get("/modele/:marka", (req,res)=>{
         res.send(wynik)
     })
 })
+app.get("/zamowienie/:marka/:model", (req,res)=>{
+    const marka = req.params.marka
+    const model = req.params.model
+    const sql = `Update samochody set czy_dostepny = 'NIE' where marka = "${marka}" and model = "${model}"`
+    con.query(sql,(err,wynik,info_wynik)=>{
+        res.send(wynik)
+        console.log(err);
+
+    })
+})
 app.listen(3000, ()=>{
     console.log("aplikacja działa");
 })

@@ -1,7 +1,6 @@
 let table = document.querySelector("table")
 let btnWszystkie = document.getElementById("wszystkie")
 let btnDostepne = document.getElementById("dostepne")
-let btnMarka = document.getElementById("btnMarka")
 let modelsel = document.getElementById("model") 
 let marka = document.getElementById("marka")
 async function getSamochody(){
@@ -81,25 +80,24 @@ async function getDosSamochody(){
         btnWszystkie.disabled = false
 }
 async function getMarka(){
-    let marka = document.getElementById('marka')
     let data  = await fetch(`http://localhost:3000/modele/${marka.value}`)
     let tdata = await data.json()
     console.log(tdata);
     for(let i=0; i<tdata.length; i++){
         let option = document.createElement("option")
+        option.value = tdata[i].model
         option.innerHTML = tdata[i].model
         modelsel.appendChild(option)
     }
 }
 getSamochody()
-getMarka()
+
 btnWszystkie.addEventListener("click",async ()=>{
     await getSamochody()
 })
 btnDostepne.addEventListener("click",async ()=>{
     await getDosSamochody()
 })
-btnMarka.addEventListener("click", ()=>{
-    modelsel.innerHTML = ""
+marka.addEventListener("change", ()=>{
     getMarka()
 })
