@@ -1,7 +1,9 @@
 let table = document.querySelector("table")
 let btnWszystkie = document.getElementById("wszystkie")
 let btnDostepne = document.getElementById("dostepne")
-
+let btnMarka = document.getElementById("btnMarka")
+let model = document.getElementById("model") 
+let marka = document.getElementById("marka")
 async function getSamochody(){
     let data = await fetch('http://localhost:3000/samochody')
     let tdata = await data.json()
@@ -36,7 +38,8 @@ async function getSamochody(){
         cenatd.innerHTML = tdata[i].cena_za_dobe
         dostepnosctd.innerHTML = tdata[i].czy_dostepny
         table.appendChild(tr)
-        btnWszystkie.disabled = "true"
+        // btnWszystkie.disabled = true
+        btnDostepne.disabled = false
     }
 }
 async function getDosSamochody(){
@@ -73,14 +76,29 @@ async function getDosSamochody(){
             cenatd.innerHTML = tdata[i].cena_za_dobe
             dostepnosctd.innerHTML = tdata[i].czy_dostepny
             table.appendChild(tr)
-            btnDostepne.disabled = "true"
-            btnWszystkie.disabled = "false"
+            btnDostepne.disabled = true
+            btnWszystkie.disabled = false
 }
 }
+async function getMarka(){
+    let marka = document.getElementById('marka')
+    let url =(`http://localhost:3000/modele/${marka.value}`)
+    let tdata = await data.json()
+    console.log(tdata);
+    for(let i=0; tdata.length; i++){
+        let option = document.createElement("option")
+        option.innerHTML = tdata[i].model
+        model.appendChild(option)
+    }
+}
+getSamochody()
 btnWszystkie.addEventListener("click",async ()=>{
     await getSamochody()
 })
 btnDostepne.addEventListener("click",async ()=>{
     await getDosSamochody()
 })
-getSamochody()
+marka.addEventListener("change",async ()=>{
+    model.innerHTML = ""
+    await getMarka()
+})
