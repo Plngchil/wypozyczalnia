@@ -1,8 +1,9 @@
 let table = document.querySelector("table")
 let btnWszystkie = document.getElementById("wszystkie")
 let btnDostepne = document.getElementById("dostepne")
-let modelsel = document.getElementById("model") 
 let marka = document.getElementById("marka")
+let model = document.getElementById("model")
+let btnZamow = document.getElementById("zamow")
 async function getSamochody(){
     let data = await fetch('http://localhost:3000/samochody')
     let tdata = await data.json()
@@ -79,16 +80,15 @@ async function getDosSamochody(){
         btnDostepne.disabled = true
         btnWszystkie.disabled = false
 }
-async function getMarka(){
-    let data  = await fetch(`http://localhost:3000/modele/${marka.value}`)
+async function zamow(){
+    let markaValue = marka.value
+    let modelValue = model.value
+    let data = await fetch(`http://localhost:3000/zamowienie/${markaValue}/${modelValue}`)
     let tdata = await data.json()
     console.log(tdata);
-    for(let i=0; i<tdata.length; i++){
-        let option = document.createElement("option")
-        option.value = tdata[i].model
-        option.innerHTML = tdata[i].model
-        modelsel.appendChild(option)
-    }
+    btnZamow.innerHTML = "Zamówiono"
+    await getDosSamochody();
+    
 }
 getSamochody()
 
@@ -98,6 +98,7 @@ btnWszystkie.addEventListener("click",async ()=>{
 btnDostepne.addEventListener("click",async ()=>{
     await getDosSamochody()
 })
-marka.addEventListener("change", ()=>{
-    getMarka()
+btnZamow.addEventListener("click",async ()=>{
+    await zamow()
+
 })

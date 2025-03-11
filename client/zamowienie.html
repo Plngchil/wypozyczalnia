@@ -33,12 +33,13 @@
             <option value="Lamborghini">Lamborghini</option>
             <option value="Tesla">Tesla</option>
         </select><br>
-        <select name="model" id="model"></select>
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model">
         <label for="dataOd">Data początku wypożyczenia</label>
         <input type="date" name="dataOd" id="dataOd" required>
         <label for="dataDo">Data końca wypożyczenia</label>
         <input type="date" name="dataDo" id="dataDo" required><br>
-        <button type="button">Prześlij</button>
+        <button type="button" id="zamow">Zamów</button>
     </div>
     <script src="app.js"></script>
 </body>
