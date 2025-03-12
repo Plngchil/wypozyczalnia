@@ -3,6 +3,7 @@ let btnWszystkie = document.getElementById("wszystkie")
 let btnDostepne = document.getElementById("dostepne")
 let marka = document.getElementById("marka")
 let model = document.getElementById("model")
+let btnModele = document.getElementById("modele")
 let btnZamow = document.getElementById("zamow")
 async function getSamochody(){
     let data = await fetch('http://localhost:3000/samochody')
@@ -80,6 +81,19 @@ async function getDosSamochody(){
         btnDostepne.disabled = true
         btnWszystkie.disabled = false
 }
+async function getModele(){
+    let markaValue = marka.value
+    let data = await fetch(`http://localhost:3000/modele/${markaValue}`)
+    let tdata = await data.json()
+    console.log(tdata);
+    for(let i = 0; i<tdata.length; i++){
+        let ol = document.createElement("ol")
+        let li = document.createElement("li")
+        li.innerHTML = tdata[i].model
+        ol.appendChild(li)
+        document.getElementById("main").appendChild(ol)
+    }
+}
 async function zamow(){
     let markaValue = marka.value
     let modelValue = model.value
@@ -88,7 +102,6 @@ async function zamow(){
     console.log(tdata);
     btnZamow.innerHTML = "Zamówiono"
     await getDosSamochody();
-    
 }
 getSamochody()
 
@@ -98,7 +111,9 @@ btnWszystkie.addEventListener("click",async ()=>{
 btnDostepne.addEventListener("click",async ()=>{
     await getDosSamochody()
 })
+btnModele.addEventListener("click",async ()=>{
+    await getModele()
+})
 btnZamow.addEventListener("click",async ()=>{
     await zamow()
-
 })

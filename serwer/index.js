@@ -30,6 +30,13 @@ app.get("/dossamochody", (req,res)=>{
         res.send(wynik)
     })
 })
+app.get("/modele/:marka", (req,res)=>{
+    const marka = req.params.marka
+    const sql = `select model from samochody where marka = "${marka} and czy_dostepny = 'TAK'"`
+    con.query(sql,(err,wynik,info_wynik)=>{
+        res.send(wynik)
+    })
+})
 app.get("/zamowienie/:marka/:model", (req,res)=>{
     const marka = req.params.marka
     const model = req.params.model
