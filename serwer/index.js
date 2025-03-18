@@ -39,12 +39,6 @@ app.get("/zamowienie/:marka/:model", (req,res)=>{
         console.log(err);
     })
 })
-app.get("/zamowienia", (req,res)=>{
-    const sql = "select * from zamowienia"
-    con.query(sql,(err,wynik,info_wynik)=>{
-        res.send(wynik)
-    })
-})
 app.get("/dodawanie/:marka/:model/:rok/:cena", (req,res)=>{
     const marka = req.params.marka
     const model = req.params.model
@@ -68,10 +62,33 @@ app.get("/modele/:marka", (req,res)=>{
         res.send(wynik)
     })
 })
+app.get("/modeleZam/:marka", (req,res)=>{
+    const marka = req.params.marka
+    const sql = `select model from samochody where marka = "${marka}" and czy_dostepny = "TAK"`
+    con.query(sql,(err,wynik,info_wynik)=>{
+        res.send(wynik)
+    })
+})
 app.get("/usun/:marka/:model", (req,res)=>{
     const marka = req.params.marka
     const model = req.params.model
     const sql = `delete from samochody where marka = "${marka}" and model = "${model}"`
+    con.query(sql,(err,wynik,info_wynik)=>{
+        res.send(wynik)
+    })
+})
+app.get("/zamowienieDodaj/:imie/:nazwisko/:marka/:model", (req,res)=>{
+    const imie = req.params.imie
+    const nazwisko = req.params.nazwisko
+    const marka = req.params.marka
+    const model = req.params.model
+    const sql = `insert into zamowienia (imie, nazwisko, marka, model, rozpoczecie_wypozyczenia) values ("${imie}", "${nazwisko}", "${marka}", "${model}", CURRENT_DATE())`
+    con.query(sql,(err,wynik,info_wynik)=>{
+        res.send(wynik)
+    })
+})
+app.get("/zamowienia", (req,res)=>{
+    const sql = "select * from zamowienia"
     con.query(sql,(err,wynik,info_wynik)=>{
         res.send(wynik)
     })

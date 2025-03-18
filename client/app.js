@@ -1,9 +1,6 @@
 let table = document.querySelector("table")
 let btnWszystkie = document.getElementById("wszystkie")
 let btnDostepne = document.getElementById("dostepne")
-let marka = document.getElementById("marka")
-let model = document.getElementById("model")
-let btnZamow = document.getElementById("zamow")
 async function getSamochody(){
     let data = await fetch('http://localhost:3000/samochody')
     let tdata = await data.json()
@@ -80,19 +77,10 @@ async function getDosSamochody(){
         btnDostepne.disabled = true
         btnWszystkie.disabled = false
 }
-async function zamowienie(){
-    let data = await fetch(`http://localhost:3000/zamowienie/${marka.value}/${model.value}`)    
-    let tdata = await data.json()
-    console.log(tdata);
-}
 getSamochody()
-
 btnDostepne.addEventListener("click",async ()=>{
     await getDosSamochody()
 })
 btnWszystkie.addEventListener("click",async ()=>{
     await getSamochody()
-})
-btnZamow.addEventListener("click",async ()=>{
-    await zamowienie()
 })

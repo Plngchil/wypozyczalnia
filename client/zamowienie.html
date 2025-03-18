@@ -12,7 +12,7 @@
     </div>
     <div id="nav">
         <a href="index.html">Strona Główna</a>
-        <a href="opinie.html">Galeria</a>
+        <a href="opinie.html">Opinie</a>
         <a href="onas.html">Opinie</a>
         <a href="administrator.html">Administrator</a>
     </div>
@@ -23,52 +23,11 @@
         <label for="nazwisko">Nazwisko:</label>
         <input type="text" id="nazwisko" name="nazwisko">
         <label for="makra">Marka:</label>
-        <input type="text" id="marka" name="marka">
+        <select id="markaSel"></select>
         <label for="model">Model:</label>
-        <input type="text" id="model" name="model">
+        <select id="modelSel"></select>
         <input type="submit" value="Złóż zamówienie" id="zamow" onclick="zamowienie()">
-        <div id="naszeMarki">
-    <h3>Nasze marki</h3>
-<details>
-  <summary>Mercedes-Benz</summary>
-  S-Class
-</details>
-<details>
-  <summary>BMW</summary>
-  7-Series<br>
-  X7 M60i<br>
-  i7 M70
-</details>
-<details>
-  <summary>Lexus</summary>
-  	LS 500h
-</details>
-<details>
-  <summary>Range Rover</summary>
-  Autobiography
-</details>
-<details>
-  <summary>Porsche</summary>
-  911 Carrera 4S
-</details>
-<details>
-  <summary>Aston Martin</summary>
-  DB11 V8
-</details>
-<details>
-  <summary>Ferrari</summary>
-  Roma
-</details>
-<details>
-  <summary>Lamborghini</summary>
-  Hurracan EVO
-</details>
-<details>
-  <summary>Tesla</summary>
-  Model S Plaid
-</details>
-</div>
     </div>
-    <script src="app.js"></script>
+    <script src="zamowienie.js"></script>
 </body>
 </html>
