@@ -84,7 +84,6 @@ async function zamowienie(){
     let data = await fetch(`http://localhost:3000/zamowienie/${marka.value}/${model.value}`)    
     let tdata = await data.json()
     console.log(tdata);
-     
 }
 getSamochody()
 
