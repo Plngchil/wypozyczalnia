@@ -1,0 +1,41 @@
+body {
+    font-family: Arial;
+    line-height: 2;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+#zobaczZam, #wroc{
+    margin: 10px;
+}
+button:hover {
+    background-color: #0056b3;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+}

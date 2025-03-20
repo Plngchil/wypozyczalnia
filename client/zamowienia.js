@@ -33,6 +33,7 @@ for(let i = 0; i<tdata.length; i++){
     markaktd.innerHTML = tdata[i].marka
     modeltd.innerHTML = tdata[i].model
     rozWyptd.innerHTML = tdata[i].rozpoczecie_wypozyczenia
+    console.log(tdata[i].rozpoczecie_wypozyczenia);
     table.appendChild(tr)
 }
 }

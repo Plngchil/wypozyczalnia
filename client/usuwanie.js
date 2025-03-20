@@ -35,4 +35,5 @@ markaSel.addEventListener("change",async()=>{
 })
 butUsun.addEventListener("click",async()=>{
     await usuwanie()
+    alert("Usunięto ofertę")
 })

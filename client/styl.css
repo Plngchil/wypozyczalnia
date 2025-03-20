@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
+    font-family: Arial;
+    line-height: 2;
     background-color: #f4f4f4;
     color: #333;
     margin: 0;
@@ -15,14 +15,12 @@ body {
     font-size: 24px;
     font-weight: bold;
 }
-
 #nav {
     display: flex;
     justify-content: center;
     padding: 10px;
     background-color: #333;
 }
-
 #nav a {
     color: #fff;
     text-decoration: none;
@@ -82,28 +80,7 @@ th, td {
     padding: 10px;
     text-align: center;
 }
-
-details {
-    border: 1px solid #aaa;
-    border-radius: 4px;
-    padding: 0.5em 0.5em 0;
-}
-
-summary {
-    font-weight: bold;
-    margin: -0.5em -0.5em 0;
-    padding: 0.5em;
-}
-
-details[open] {
-    padding: 0.5em;
-}
-
-details[open] summary {
-    border-bottom: 1px solid #aaa;
-    margin-bottom: 0.5em;
-}
 a{
-    text-decoration: none;
     color: white;
+    text-decoration: none;
 }
